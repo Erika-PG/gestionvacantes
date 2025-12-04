@@ -19,7 +19,23 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative; /* Necesario para el nombre */
         }
+
+         /* --- ESTILO AGREGADO PARA EL NOMBRE --- */
+         .signature {
+            position: absolute;
+            bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+            pointer-events: none;
+        }
+        /* ------------------------------------- */
 
         .register-container {
             background: white;
@@ -30,6 +46,7 @@
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
+            z-index: 10;
         }
 
         h2 {
@@ -205,7 +222,6 @@
             <span class="error-message" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></span>
         </div>
 
-        <!-- Campos específicos para Empleador -->
         <div class="form-group" id="empresaGroup">
             <label for="empresa">Nombre de la Empresa *</label>
             <input type="text" th:field="*{empresa}" id="empresa"
@@ -213,7 +229,6 @@
             <span class="error-message" th:if="${#fields.hasErrors('empresa')}" th:errors="*{empresa}"></span>
         </div>
 
-        <!-- Campos específicos para Aspirante -->
         <div class="form-group" id="habilidadesGroup">
             <label for="habilidades">Habilidades / Perfil Profesional</label>
             <textarea th:field="*{habilidades}" id="habilidades"
@@ -246,6 +261,8 @@
         <a th:href="@{/}">← Volver al inicio</a>
     </div>
 </div>
+
+<div class="signature">© 2024 Desarrollado por Erika Perez Garcia</div>
 
 <script>
     function mostrarCamposEspecificos() {
